@@ -1,0 +1,17 @@
+---
+- include_tasks: versioncheck.yml
+  when: submodules_versioncheck|bool
+
+- name: import EPEL Repo GPG Key
+  become: true
+  rpm_key:
+    key: "{{ epel-repo_gpg_key_url }}"
+    state: present
+
+- name: Install EPEL repo
+  become: true
+  yum:
+    name: "{{ epel-repo_url }}"
+    state: present
+  until: result is succeeded
+  retries: 3
