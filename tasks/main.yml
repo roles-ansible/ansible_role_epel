@@ -7,6 +7,7 @@
   rpm_key:
     key: "{{ epel_repo_gpg_key_url }}"
     state: present
+    validate_certs: true
 
 - name: Install EPEL repo
   become: true
