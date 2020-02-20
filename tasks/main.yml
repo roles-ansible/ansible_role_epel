@@ -5,13 +5,14 @@
 - name: import EPEL Repo GPG Key
   become: true
   rpm_key:
-    key: "{{ epel-repo_gpg_key_url }}"
+    key: "{{ epel_repo_gpg_key_url }}"
     state: present
 
 - name: Install EPEL repo
   become: true
   yum:
-    name: "{{ epel-repo_url }}"
+    name: "{{ epel_repo_url }}"
     state: present
+  register: result
   until: result is succeeded
   retries: 3
