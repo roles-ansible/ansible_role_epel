@@ -10,6 +10,7 @@ missing:
 - os detection (RHEL)
 - github-actions
 - docs
+- vars
 
 working:
 - epel install on centos 7

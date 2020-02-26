@@ -1,18 +1,30 @@
 ---
+- name: combine epel_repo config
+  set_fact:
+    epel_repo: "{{ _epel_repo|combine(epel_repo, recursive=True) }}"
+
 - include_tasks: versioncheck.yml
   when: submodules_versioncheck|bool
 
 - name: import EPEL Repo GPG Key
+  block:
+    - name: import epel gpg from file
+      rpm_key:
+        key: "{{ epel_repo.gpg_key_path }}"
+        state: present
+        fingerprint: "{{ epel_repo.fingerprint[ansible_distribution_major_version] }}"
+  rescue:
+    - name: import epel gpgp from url
+      rpm_key:
+        key: "{{ epel_repo.gpg_key_url }}"
+        state: present
+        fingerprint: "{{ epel_repo['fingerprint'][ ansible_distribution_major_version ] }}"
   become: true
-  rpm_key:
-    key: "{{ epel_repo_gpg_key_url }}"
-    state: present
-    validate_certs: true
 
 - name: Install EPEL repo
   become: true
   yum:
-    name: "{{ epel_repo_url }}"
+    name: "{{ epel_repo.url }}"
     state: present
   register: result
   until: result is succeeded
