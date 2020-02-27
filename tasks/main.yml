@@ -14,7 +14,7 @@
         state: present
         fingerprint: "{{ epel_repo.fingerprint[ansible_distribution_major_version] }}"
   rescue:
-    - name: import epel gpgp from url
+    - name: import epel gpg key from url
       rpm_key:
         key: "{{ epel_repo.gpg_key_url }}"
         state: present
