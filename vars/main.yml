@@ -1,5 +1,5 @@
 ---
-playbook_version_number: 1025 # should be over ninethousand
+playbook_version_number: 1026 # should be over ninethousand
 playbook_version_path: 'role-epel_roles-ansible_github.com.version' 
 # epel repo
 _epel_repo:

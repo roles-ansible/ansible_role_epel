@@ -1,4 +1,5 @@
 ---
+# do we want a simple versionscheck? (true is recomended)
 submodules_versioncheck: false
 # epel repo
 epel_repo:
