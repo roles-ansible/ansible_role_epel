@@ -20,6 +20,9 @@
         state: present
         fingerprint: "{{ epel_repo['fingerprint'][ ansible_distribution_major_version ] }}"
   become: true
+  when:
+    - ansible_os_family == 'RedHat'
+    - ansible_distribution != 'Fedorra'
 
 - name: Install EPEL repo
   become: true
@@ -29,3 +32,11 @@
   register: result
   until: result is succeeded
   retries: 3
+  when:
+    - ansible_os_family == 'RedHat'
+    - ansible_distribution != 'Fedorra'
+
+- name: info for fedora and non RHEL
+  pause:
+    prompt: "Please notice this role is designed to work only with RHEL/CentOS 6,7 and 8"
+  when: ansible_os_family != 'RedHat' or ansible_distribution == 'Fedorra'
