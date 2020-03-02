@@ -39,3 +39,4 @@
 - name: info for fedora and non RHEL
   pause:
     prompt: "Please notice this role is designed to work only with RHEL/CentOS 6,7 and 8"
+  when: ansible_os_family != 'RedHat' or ansible_distribution == 'Fedorra'
