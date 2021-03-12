@@ -1,11 +1,11 @@
 ---
 galaxy_info:
-  author: L3D
+  author: do1jlr
   description: Ansible role to install the Extra Packages for Enterprise Linux (EPEL) - Repository on RHEL/centos
   role_name: epel
   license: MIT
   min_ansible_version: 2.9
-  github_branch: master
+  github_branch: main
   platforms:
     - name: EL
       versions:

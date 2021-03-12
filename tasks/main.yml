@@ -1,9 +1,10 @@
 ---
 - name: combine epel_repo config
   set_fact:
-    epel_repo: "{{ _epel_repo|combine(epel_repo, recursive=True) }}"
+    epel_repo: "{{ _epel_repo|combine(epel_repo, recursive=true) }}"
 
-- include_tasks: versioncheck.yml
+- name: run optional versionscheck
+  ansible.builtin.include_tasks: versioncheck.yml
   when: submodules_versioncheck|bool
 
 - name: import EPEL Repo GPG Key
