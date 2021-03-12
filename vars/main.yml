@@ -1,6 +1,6 @@
 ---
-playbook_version_number: 1026 # should be over ninethousand
-playbook_version_path: 'role-epel_roles-ansible_github.com.version' 
+playbook_version_number: 1027  # should be int
+playbook_version_path: 'role-epel_roles-ansible_github.com.version'
 # epel repo
 _epel_repo:
   url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"

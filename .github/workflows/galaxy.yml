@@ -1,7 +1,7 @@
 ---
 name: Galaxy release
 
-# yamllint disable-line rule:truthy                                                                                                                                                                                                          
+# yamllint disable-line rule:truthy
 on:
   push:
     branches: ['main']
